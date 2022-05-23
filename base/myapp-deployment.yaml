@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: myapp
+          image: 340365812502.dkr.ecr.ap-northeast-1.amazonaws.com/myapp-repo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
